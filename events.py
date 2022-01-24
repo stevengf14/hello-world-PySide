@@ -8,11 +8,16 @@ class PrincipalWindow(QMainWindow):
         self.setWindowTitle('Signals and Slots')
         # Button
         button = QPushButton('Click here')
+        button.setCheckable(True)
+        button.clicked.connect(self.check_event)
         button.clicked.connect(self.click_event)
         self.setCentralWidget(button)
 
     def click_event(self):
         print('Clicked')
+
+    def check_event(self, check):
+        print(f'Checked? {check}')
 
 if __name__ == '__main__':
     app = QApplication([])
