@@ -9,6 +9,7 @@ class PrincipalWindow(QMainWindow):
         # Button
         self.button = QPushButton('Click here')
         self.button.clicked.connect(self.click_event)
+        self.windowTitleChanged.connect(self.title_changed)
         self.setCentralWidget(self.button)
 
     def click_event(self):
@@ -16,6 +17,9 @@ class PrincipalWindow(QMainWindow):
         self.setEnabled(False)
         self.setWindowTitle('New App Title')
         print('Click event')
+
+    def title_changed(self, new_title):
+        print(f'New Title: {new_title}')
 
 if __name__ == '__main__':
     app = QApplication([])
