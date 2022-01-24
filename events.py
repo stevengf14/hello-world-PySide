@@ -1,25 +1,21 @@
 import sys
-from PySide6.QtWidgets import QMainWindow, QPushButton, QApplication
+from PySide6.QtWidgets import QMainWindow, QApplication, QLabel, QLineEdit, QVBoxLayout, QWidget
 
 
 class PrincipalWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Signals and Slots')
-        # Button
-        self.button = QPushButton('Click here')
-        self.button.clicked.connect(self.click_event)
-        self.windowTitleChanged.connect(self.title_changed)
-        self.setCentralWidget(self.button)
-
-    def click_event(self):
-        self.button.setText('New Text')
-        self.setEnabled(False)
-        self.setWindowTitle('New App Title')
-        print('Click event')
-
-    def title_changed(self, new_title):
-        print(f'New Title: {new_title}')
+        self.setFixedSize(400, 200)
+        self.tag = QLabel()
+        self.text = QLineEdit()
+        self.text.textChanged.connect(self.tag.setText)
+        layout = QVBoxLayout()
+        layout.addWidget(self.text)
+        layout.addWidget(self.tag)
+        container = QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
 
 if __name__ == '__main__':
     app = QApplication([])
