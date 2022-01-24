@@ -1,11 +1,12 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QMainWindow
 
 # Base class of Qt (PySide)
 # Process loop events
 app = QApplication()
 # Creating window object
-window = QWidget()
+# window = QWidget()
+window = QMainWindow()
 # Modifiying window
 window.setWindowTitle('Hello World with PySide')
 window.resize(600, 400)
