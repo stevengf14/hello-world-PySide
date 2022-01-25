@@ -15,7 +15,10 @@ class Components(QMainWindow):
         # combobox.setInsertPolicy(QComboBox.NoInsert)
         # combobox.setInsertPolicy(QComboBox.InsertAtTop)
         # combobox.setInsertPolicy(QComboBox.InsertAtCurrent)
-        combobox.setInsertPolicy(QComboBox.InsertAtBottom)
+        # combobox.setInsertPolicy(QComboBox.InsertAtBottom)
+        # combobox.setInsertPolicy(QComboBox.InsertBeforeCurrent)
+        # combobox.setInsertPolicy(QComboBox.InsertAfterCurrent)
+        combobox.setInsertPolicy(QComboBox.InsertAlphabetically)
         combobox.setMaxCount(6)
         self.setCentralWidget(combobox)
 
