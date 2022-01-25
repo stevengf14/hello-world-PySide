@@ -1,25 +1,23 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox
+from PySide6.QtWidgets import QMainWindow, QApplication, QComboBox
+
 
 class Components(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Components')
-        checkbox = QCheckBox('New Checkbox')
-        checkbox.setTristate(True)
-        checkbox.stateChanged.connect(self.show_state)
-        self.setCentralWidget(checkbox)
+        combobox = QComboBox()
+        combobox.addItem('First')
+        combobox.addItems(['Second', 'Third'])
+        combobox.currentIndexChanged.connect(self.change_index)
+        combobox.currentTextChanged.connect(self.change_text)
+        self.setCentralWidget(combobox)
 
-    def show_state(self, state):
-        print('Checkbox state: ', state)
-        if state == Qt.Checked:
-            print('Checked')
-        elif state == Qt.PartiallyChecked:
-            print('Partially Checked')
-        elif state == Qt.Unchecked:
-            print('No Checked')
-        else:
-            print('Invalid state of checkbox')
+    def change_index(self, new_index):
+        print(f'New Index: {new_index}')
+
+    def change_text(self, new_text):
+        print(f'New text: {new_text}')
 
 if __name__ == '__main__':
     app = QApplication([])
