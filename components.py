@@ -11,6 +11,12 @@ class Components(QMainWindow):
         combobox.addItems(['Second', 'Third'])
         combobox.currentIndexChanged.connect(self.change_index)
         combobox.currentTextChanged.connect(self.change_text)
+        combobox.setEditable(True)
+        # combobox.setInsertPolicy(QComboBox.NoInsert)
+        # combobox.setInsertPolicy(QComboBox.InsertAtTop)
+        # combobox.setInsertPolicy(QComboBox.InsertAtCurrent)
+        combobox.setInsertPolicy(QComboBox.InsertAtBottom)
+        combobox.setMaxCount(6)
         self.setCentralWidget(combobox)
 
     def change_index(self, new_index):
