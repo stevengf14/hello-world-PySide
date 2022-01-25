@@ -1,16 +1,25 @@
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import QMainWindow, QLabel, QApplication
+from PySide6.QtWidgets import QMainWindow, QApplication, QCheckBox
 
 class Components(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Components')
-        self.setFixedSize(500, 600)
-        tag = QLabel('Hi')
-        tag.setPixmap(QPixmap('spidey.jpg'))
-        # tag.setScaledContents(True)
-        self.setCentralWidget(tag)
+        checkbox = QCheckBox('New Checkbox')
+        checkbox.setTristate(True)
+        checkbox.stateChanged.connect(self.show_state)
+        self.setCentralWidget(checkbox)
+
+    def show_state(self, state):
+        print('Checkbox state: ', state)
+        if state == Qt.Checked:
+            print('Checked')
+        elif state == Qt.PartiallyChecked:
+            print('Partially Checked')
+        elif state == Qt.Unchecked:
+            print('No Checked')
+        else:
+            print('Invalid state of checkbox')
 
 if __name__ == '__main__':
     app = QApplication([])
