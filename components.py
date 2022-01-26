@@ -1,30 +1,26 @@
-from PySide6.QtWidgets import QMainWindow, QApplication, QLineEdit
+from PySide6.QtWidgets import QMainWindow, QApplication, QSpinBox
 
 
 class Components(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Components')
-        text_line = QLineEdit()
-        text_line.setMaxLength(15)
-        text_line.setPlaceholderText('Here is the name')
-        # text_line.setReadOnly(True)
-        text_line.setInputMask('00-0000-0000')
-        text_line.returnPressed.connect(self.press_enter)
-        text_line.selectionChanged.connect(self.change_selection)
-        text_line.textChanged.connect(self.change_text)
-        self.setCentralWidget(text_line)
+        number = QSpinBox()
+        # number.setMinimum(-5)
+        # number.setMaximum(5)
+        number.setRange(-25, 25)
+        number.setPrefix('$')
+        number.setSuffix(' or USD')
+        number.setSingleStep(3)
+        number.valueChanged.connect(self.change_value)
+        number.textChanged.connect(self.change_text)
+        self.setCentralWidget(number)
 
-    def press_enter(self):
-        print('Enter pressed')
-        self.centralWidget().setText('00-0000-0000')
-
-    def change_selection(self):
-        print('Change selection')
-        print(self.centralWidget().selectedText())
+    def change_value(self, new_value):
+        print(f'New value: {new_value}')
 
     def change_text(self, new_text):
-        print('Text Change:s', new_text)
+        print(f'New text: {new_text}')
 
 if __name__ == '__main__':
     app = QApplication([])
