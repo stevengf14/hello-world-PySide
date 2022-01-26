@@ -1,14 +1,15 @@
-from PySide6.QtWidgets import QMainWindow, QApplication, QSpinBox, QDoubleSpinBox, QSlider
+from PySide6.QtWidgets import QMainWindow, QApplication, QDial
 
 
 class Components(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Components')
-        component = QSlider()
+        component = QDial()
         # component = QSlider(Qt.Horizontal)
-        component.setMinimum(-25)
-        component.setMaximum(25)
+        # component.setMinimum(-25)
+        # component.setMaximum(25)
+        component.setRange(-25, 25)
         component.valueChanged.connect(self.change_value)
         component.sliderMoved.connect(self.slider_moved)
         component.sliderPressed.connect(self.slider_pressed)
@@ -22,10 +23,10 @@ class Components(QMainWindow):
         print(f'New position: {new_position}')
 
     def slider_pressed(self):
-        print('Slider pressed')
+        print('Dial pressed')
 
     def slider_released(self):
-        print('Slider released')
+        print('Dial released')
 
 if __name__ == '__main__':
     app = QApplication([])
