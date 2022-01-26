@@ -1,29 +1,19 @@
-from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QMainWindow, QApplication, QComboBox
+from PySide6.QtWidgets import QMainWindow, QApplication, QListWidget
 
 
 class Components(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Components')
-        combobox = QComboBox()
-        combobox.addItem('First')
-        combobox.addItems(['Second', 'Third'])
-        combobox.currentIndexChanged.connect(self.change_index)
-        combobox.currentTextChanged.connect(self.change_text)
-        combobox.setEditable(True)
-        # combobox.setInsertPolicy(QComboBox.NoInsert)
-        # combobox.setInsertPolicy(QComboBox.InsertAtTop)
-        # combobox.setInsertPolicy(QComboBox.InsertAtCurrent)
-        # combobox.setInsertPolicy(QComboBox.InsertAtBottom)
-        # combobox.setInsertPolicy(QComboBox.InsertBeforeCurrent)
-        # combobox.setInsertPolicy(QComboBox.InsertAfterCurrent)
-        combobox.setInsertPolicy(QComboBox.InsertAlphabetically)
-        combobox.setMaxCount(6)
-        self.setCentralWidget(combobox)
+        list = QListWidget()
+        list.addItem('First')
+        list.addItems(['Second', 'Third'])
+        list.currentItemChanged.connect(self.change_element)
+        list.currentTextChanged.connect(self.change_text)
+        self.setCentralWidget(list)
 
-    def change_index(self, new_index):
-        print(f'New Index: {new_index}')
+    def change_element(self, new_element):
+        print(f'New Element: {new_element.text()}')
 
     def change_text(self, new_text):
         print(f'New text: {new_text}')
