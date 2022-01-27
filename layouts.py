@@ -1,5 +1,5 @@
 from PySide6.QtGui import QPalette, QColor
-from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QVBoxLayout
+from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QHBoxLayout
 
 
 class Color(QWidget):
@@ -13,7 +13,8 @@ class Color(QWidget):
 class PrincipalWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        layout = QVBoxLayout()
+        # layout = QVBoxLayout()
+        layout = QHBoxLayout()
         layout.addWidget(Color('red'))
         layout.addWidget(Color('blue'))
         layout.addWidget(Color('green'))
