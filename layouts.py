@@ -14,14 +14,21 @@ class PrincipalWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         horizontal_layout = QHBoxLayout()
+        horizontal_layout.setContentsMargins(10,10,10,10)
         vertical_layout = QVBoxLayout()
+        vertical_layout.setContentsMargins(5,10,5,10)
+
+        vertical_layout.setSpacing(5)
+        horizontal_layout.setSpacing(20)
 
         vertical_layout.addWidget(Color('yellow'))
         vertical_layout.addWidget(Color('blue'))
         vertical_layout.addWidget(Color('red'))
+
         horizontal_layout.addLayout(vertical_layout)
         horizontal_layout.addWidget(Color('green'))
         horizontal_layout.addWidget(Color('black'))
+
         component = QWidget()
         component.setLayout(horizontal_layout)
         self.setCentralWidget(component)
